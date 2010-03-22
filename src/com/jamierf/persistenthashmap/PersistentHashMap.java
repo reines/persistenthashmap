@@ -1,6 +1,6 @@
 /**
  * 
- * This file is part of the PersistentHashMap library.
+ * This file is part of the Persistent-HashMap library.
  * Copyright (C) 2010 Jamie Furness (http://www.jamierf.co.uk)
  * License: http://www.gnu.org/licenses/gpl.html GPL version 3 (or higher)
  * 
@@ -258,17 +258,16 @@ public class PersistentHashMap<K extends Serializable, V extends Serializable> i
 			File keyFile = null;
 			
 			// Handle the directories
-			for (int i = 2;i < 9;i += 3) {
-				String dirName = fileName.substring(0, i);
-				File dirFile = new File(keyStore, dirName);
-				if (!dirFile.isDirectory()) {
-					if (!create)
-						return null;
-					
-					dirFile.mkdir(); // Make the key dir
-					new File(valueStore, dirName).mkdir(); // Make the value dir
-				}
+			String dirName = fileName.substring(0, 9);
+			File keyDir = new File(keyStore, dirName);
+			File valueDir = new File(valueStore, dirName);
+			
+			if (create) {
+				keyDir.mkdirs();
+				valueDir.mkdirs();
 			}
+			else if (!keyDir.isDirectory() || !valueDir.isDirectory())
+				return null;
 			
 			// Find the first position which isn't being used
 			String fileNameI = null;
@@ -363,15 +362,19 @@ public class PersistentHashMap<K extends Serializable, V extends Serializable> i
 		}
 		
 		protected File iterateFiles(File dir, int index, boolean increment) throws IOException {
+			if (!dir.exists())
+				return null;
+			
 			// If we haven't stared at this depth, initialize the file list and start at the beginning
 			if (indices[index] == NOT_STARTED) {
-				files[index] = dir.listFiles();
 				indices[index] = 0;
+				files[index] = dir.listFiles();
 			}
 			
 			// If we have finished this depth
 			if (indices[index] >= files[index].length){
 				indices[index] = NOT_STARTED;
+				files[index] = null;
 				return null;
 			}
 			
@@ -382,8 +385,9 @@ public class PersistentHashMap<K extends Serializable, V extends Serializable> i
 				
 				while ((subFile = iterateFiles(currentFile, index + 1, increment)) == null) {
 					indices[index]++;
-					if (indices[index] == files[index].length) {
+					if (indices[index] >= files[index].length) {
 						indices[index] = NOT_STARTED;
+						files[index] = null;
 						return null;
 					}
 					currentFile = files[index][indices[index]];

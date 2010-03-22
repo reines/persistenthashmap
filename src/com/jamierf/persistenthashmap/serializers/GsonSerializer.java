@@ -1,6 +1,6 @@
 /**
  * 
- * This file is part of the PersistentHashMap library.
+ * This file is part of the Persistent-HashMap library.
  * Copyright (C) 2010 George Haney (http://www.georgemh.com)
  * License: http://www.gnu.org/licenses/gpl.html GPL version 3 (or higher)
  * 
