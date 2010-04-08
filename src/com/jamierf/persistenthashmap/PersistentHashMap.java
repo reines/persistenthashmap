@@ -195,7 +195,10 @@ public class PersistentHashMap<K extends Serializable, V extends Serializable> i
 	
 	public synchronized boolean toZip(File zipFile) {
 		try {
-			ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipFile)); 
+			FileOutputStream fos = new FileOutputStream(zipFile);
+			fos.getChannel().force(true);
+			
+			ZipOutputStream zos = new ZipOutputStream(fos); 
 			zipDirectory(root, zos);
 			zos.close();
 			

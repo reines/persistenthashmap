@@ -40,7 +40,10 @@ public class FileUtils {
 	}
 	
 	public static void putGZIPContents(File f, String contents) throws FileNotFoundException, IOException {
-		PrintWriter out = new PrintWriter(new OutputStreamWriter(new GZIPOutputStream(new FileOutputStream(f))));
+		FileOutputStream fos = new FileOutputStream(f);
+		fos.getChannel().force(true);
+		
+		PrintWriter out = new PrintWriter(new OutputStreamWriter(new GZIPOutputStream(fos)));
 		out.print(contents);
 		out.close();
 	}

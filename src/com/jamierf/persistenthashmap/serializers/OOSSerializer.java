@@ -32,7 +32,10 @@ public class OOSSerializer implements ObjectSerializer {
 	}
 
 	public void writeObject(File f, Serializable o) throws IOException {
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+		FileOutputStream fos = new FileOutputStream(f);
+		fos.getChannel().force(true);
+		
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(o);
 		oos.close();
 	}
