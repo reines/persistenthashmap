@@ -14,7 +14,7 @@ The Persistent-HashMap is basically a persistent version of the Java HashMap cla
  * Since objects are written to disk the Persistent-HashMap does not have amazingly good performance. It should only be used when persistence is necesary and performance is not critical.
 
 ## License
-The Persistent-HashMap library is released under the GNU General Public License v3 (http://www.gnu.org/licenses/gpl.html).
+The Persistent-HashMap library is released under the [GNU General Public License v3](http://www.gnu.org/licenses/gpl.html).
 
 ## Credits
-The theory is based on HashStore (http://www.cellspark.com/hashstore.html).
+The theory is based on [HashStore](http://www.cellspark.com/hashstore.html).
