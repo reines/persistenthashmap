@@ -23,7 +23,7 @@ public class OOSSerializer implements ObjectSerializer {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
 			Object o = ois.readObject();
 			ois.close();
-			
+
 			return o;
 		}
 		catch (ClassNotFoundException e) {
@@ -31,10 +31,10 @@ public class OOSSerializer implements ObjectSerializer {
 		}
 	}
 
-	public void writeObject(File f, Serializable o) throws IOException {
+	public void writeObject(File f, Serializable o, boolean force) throws IOException {
 		FileOutputStream fos = new FileOutputStream(f);
-		fos.getChannel().force(true);
-		
+		fos.getChannel().force(force);
+
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(o);
 		oos.close();

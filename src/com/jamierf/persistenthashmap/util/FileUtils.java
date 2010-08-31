@@ -23,35 +23,35 @@ import java.util.zip.GZIPOutputStream;
 public class FileUtils {
 
 	protected static final int BUFFER_SIZE = 4096;
-	
+
 	private FileUtils() { }
-	
+
 	public static String getGZIPContents(File f) throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(new GZIPInputStream(new FileInputStream(f))));
 		StringBuffer outBuffer = new StringBuffer();
-		
+
 		char[] inBuffer = new char[BUFFER_SIZE];
 		while (in.read(inBuffer, 0, BUFFER_SIZE) != -1)
 			outBuffer.append(inBuffer);
-		
+
 		in.close();
-		
+
 		return outBuffer.toString();
 	}
-	
-	public static void putGZIPContents(File f, String contents) throws FileNotFoundException, IOException {
+
+	public static void putGZIPContents(File f, String contents, boolean force) throws FileNotFoundException, IOException {
 		FileOutputStream fos = new FileOutputStream(f);
-		fos.getChannel().force(true);
-		
+		fos.getChannel().force(force);
+
 		PrintWriter out = new PrintWriter(new OutputStreamWriter(new GZIPOutputStream(fos)));
 		out.print(contents);
 		out.close();
 	}
-	
+
 	public static void deleteDirectory(File dir) {
 		if (!dir.isDirectory())
 			return;
-		
+
 		File[] files = dir.listFiles();
 		for (File f : files) {
 			if (f.isDirectory())
@@ -59,7 +59,7 @@ public class FileUtils {
 			else
 				f.delete();
 		}
-		
+
 		dir.delete();
 	}
 }

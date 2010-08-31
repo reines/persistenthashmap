@@ -18,21 +18,21 @@ class EntryIterator<K extends Serializable, V extends Serializable> implements I
 	private PersistentHashMap<K, V> map;
 	private Iterator<K> iterator;
 	private K current;
-	
+
 	public EntryIterator(PersistentHashMap<K, V> map) {
 		this.map = map;
-		
+
 		iterator = new KeyIterator<K, V>(map);
 		current = null;
 	}
-	
+
 	public boolean hasNext() {
 		return iterator.hasNext();
 	}
 
 	public Map.Entry<K, V> next() {
 		current = iterator.next();
-		
+
 		return new AbstractMap.SimpleEntry<K, V>(current, map.get(current));
 	}
 

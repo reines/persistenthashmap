@@ -19,19 +19,18 @@ import com.thoughtworks.xstream.XStream;
 public class XStreamSerializer implements ObjectSerializer {
 
 	XStream xstream;
-	
+
 	public XStreamSerializer() {
 		xstream = new XStream();
 	}
-	
+
 	public Object readObject(File f) throws IOException {
 		String data = FileUtils.getGZIPContents(f);
 		return xstream.fromXML(data);
 	}
 
-	public void writeObject(File f, Serializable o) throws IOException {
+	public void writeObject(File f, Serializable o, boolean force) throws IOException {
 		String data = xstream.toXML(o);
-		FileUtils.putGZIPContents(f, data);
+		FileUtils.putGZIPContents(f, data, force);
 	}
-
 }

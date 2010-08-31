@@ -15,21 +15,21 @@ class ValueIterator<K extends Serializable, V extends Serializable> implements I
 	private PersistentHashMap<K, V> map;
 	private Iterator<K> iterator;
 	private K current;
-	
+
 	public ValueIterator(PersistentHashMap<K, V> map) {
 		this.map = map;
-		
+
 		iterator = new KeyIterator<K, V>(map);
 		current = null;
 	}
-	
+
 	public boolean hasNext() {
 		return iterator.hasNext();
 	}
 
 	public V next() {
 		current = iterator.next();
-		
+
 		return map.get(current);
 	}
 

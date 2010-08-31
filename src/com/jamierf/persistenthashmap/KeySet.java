@@ -16,11 +16,11 @@ import java.util.Iterator;
 class KeySet<K extends Serializable, V extends Serializable> extends AbstractSet<K> {
 
 	private PersistentHashMap<K, V> map;
-	
+
 	public KeySet(PersistentHashMap<K, V> map) {
 		this.map = map;
 	}
-	
+
 	public boolean contains(Object o) {
 		return map.containsKey(o);
 	}
@@ -31,7 +31,7 @@ class KeySet<K extends Serializable, V extends Serializable> extends AbstractSet
 		for (K key : ec)
 			if (!contains(key))
 				return false;
-		
+
 		return true;
 	}
 

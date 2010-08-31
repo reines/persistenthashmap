@@ -16,11 +16,11 @@ import java.util.Iterator;
 class ValueSet<K extends Serializable, V extends Serializable> extends AbstractSet<V> {
 
 	private PersistentHashMap<K, V> map;
-	
+
 	public ValueSet(PersistentHashMap<K, V> map) {
 		this.map = map;
 	}
-	
+
 	public boolean contains(Object o) {
 		return map.containsValue(o);
 	}
@@ -31,7 +31,7 @@ class ValueSet<K extends Serializable, V extends Serializable> extends AbstractS
 		for (V value : ec)
 			if (!contains(value))
 				return false;
-		
+
 		return true;
 	}
 
