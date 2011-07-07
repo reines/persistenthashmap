@@ -1,16 +1,12 @@
 /**
- * 
+ *
  * This file is part of the Persistent-HashMap library.
  * Copyright (C) 2010 Jamie Furness (http://www.jamierf.co.uk)
  * License: http://www.gnu.org/licenses/gpl.html GPL version 3 (or higher)
- * 
+ *
  */
 
 package com.jamierf.persistenthashmap;
-
-import com.jamierf.persistenthashmap.serializers.OOSSerializer;
-import com.jamierf.persistenthashmap.serializers.ObjectSerializer;
-import com.jamierf.persistenthashmap.util.FileUtils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -26,6 +22,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+
+import com.jamierf.persistenthashmap.serializers.OOSSerializer;
+import com.jamierf.persistenthashmap.serializers.ObjectSerializer;
+import com.jamierf.persistenthashmap.util.FileUtils;
 
 public class PersistentHashMap<K extends Serializable, V extends Serializable> implements Map<K, V> {
 

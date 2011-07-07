@@ -7,5 +7,5 @@ public class TestXStreamSerializerPersistentHashMap extends TestPersistentHashMa
 	public TestXStreamSerializerPersistentHashMap() {
 		super(new XStreamSerializer());
 	}
-	
+
 }

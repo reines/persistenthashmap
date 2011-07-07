@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * This file is part of the Persistent-HashMap library.
  * Copyright (C) 2010 Jamie Furness (http://www.jamierf.co.uk)
  * License: http://www.gnu.org/licenses/gpl.html GPL version 3 (or higher)
- * 
+ *
  */
 
 package com.jamierf.persistenthashmap;
@@ -22,10 +22,12 @@ class EntrySet<K extends Serializable, V extends Serializable> extends AbstractS
 		this.map = map;
 	}
 
+	@Override
 	public Iterator<Map.Entry<K, V>> iterator() {
 		return new EntryIterator<K, V>(map);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean contains(Object o) {
 		if (!(o instanceof Map.Entry))
@@ -36,19 +38,23 @@ class EntrySet<K extends Serializable, V extends Serializable> extends AbstractS
 		return value != null && value.equals(e.getValue());
 	}
 
+	@Override
 	public int size() {
 		return map.size();
 	}
 
+	@Override
 	public void clear() {
 		map.clear();
 	}
 
+	@Override
 	public boolean add(Map.Entry<K, V> e) {
 		map.put(e.getKey(), e.getValue());
 		return true;
 	}
 
+	@Override
 	public boolean addAll(Collection<? extends Map.Entry<K, V>> c) {
 		for (Map.Entry<K, V> e : c)
 			map.put(e.getKey(), e.getValue());
@@ -56,6 +62,7 @@ class EntrySet<K extends Serializable, V extends Serializable> extends AbstractS
 		return true;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean containsAll(Collection<?> c) {
 		Collection<Map.Entry<K, V>> ec = (Collection<Map.Entry<K, V>>) c;
@@ -66,10 +73,12 @@ class EntrySet<K extends Serializable, V extends Serializable> extends AbstractS
 		return true;
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return map.isEmpty();
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean remove(Object o) {
 		if (!(o instanceof Map.Entry))
@@ -83,6 +92,7 @@ class EntrySet<K extends Serializable, V extends Serializable> extends AbstractS
 		return true;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean removeAll(Collection<?> c) {
 		Collection<Map.Entry<K, V>> ec = (Collection<Map.Entry<K, V>>) c;
@@ -92,6 +102,7 @@ class EntrySet<K extends Serializable, V extends Serializable> extends AbstractS
 		return true;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean retainAll(Collection<?> c) {
 		Collection<Map.Entry<K, V>> ec = (Collection<Map.Entry<K, V>>) c;

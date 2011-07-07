@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * This file is part of the Persistent-HashMap library.
  * Copyright (C) 2010 Jamie Furness (http://www.jamierf.co.uk)
  * License: http://www.gnu.org/licenses/gpl.html GPL version 3 (or higher)
- * 
+ *
  */
 
 package com.jamierf.persistenthashmap;
@@ -21,10 +21,12 @@ class KeySet<K extends Serializable, V extends Serializable> extends AbstractSet
 		this.map = map;
 	}
 
+	@Override
 	public boolean contains(Object o) {
 		return map.containsKey(o);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean containsAll(Collection<?> c) {
 		Collection<K> ec = (Collection<K>) c;
@@ -35,14 +37,17 @@ class KeySet<K extends Serializable, V extends Serializable> extends AbstractSet
 		return true;
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return map.isEmpty();
 	}
 
+	@Override
 	public Iterator<K> iterator() {
 		return new KeyIterator<K, V>(map);
 	}
 
+	@Override
 	public int size() {
 		return map.size();
 	}

@@ -7,5 +7,5 @@ public class TestGsonSerializerCachedPersistentHashMap extends TestCachedPersist
 	public TestGsonSerializerCachedPersistentHashMap() {
 		super(new GsonSerializer());
 	}
-	
+
 }

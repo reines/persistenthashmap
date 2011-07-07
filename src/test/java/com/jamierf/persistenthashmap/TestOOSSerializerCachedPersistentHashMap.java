@@ -7,5 +7,5 @@ public class TestOOSSerializerCachedPersistentHashMap extends TestCachedPersiste
 	public TestOOSSerializerCachedPersistentHashMap() {
 		super(new OOSSerializer());
 	}
-	
+
 }
