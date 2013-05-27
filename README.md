@@ -1,6 +1,8 @@
 # About Persistent-HashMap
 The Persistent-HashMap is basically a persistent version of the Java HashMap class.
 
+Warning: It is not under active development, and has not been used in a production environment.
+
 ## Features
  * Implements the Map interface so can be used in the exact same way as a regular HashMap.
  * No space needs preallocated.
