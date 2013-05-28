@@ -148,8 +148,17 @@ public class PersistentHashMap<K extends Serializable, V extends Serializable> i
 			keyFile.delete();
 			valueFile.delete();
 
-			// TODO: We also need to delete their directories if empty otherwise isEmpty() will fail...
-			// TODO: Shift any subsequent files down
+			while(!keyFile.getParentFile().equals(keyStore)
+				&& keyFile.getParentFile().listFiles().length == 0) {
+					keyFile.getParentFile().delete();
+					keyFile = keyFile.getParentFile();		
+			}
+			
+			while(!valueFile.getParentFile().equals(valueStore)
+				&& valueFile.getParentFile().listFiles().length == 0) {
+					valueFile.getParentFile().delete();
+					valueFile = valueFile.getParentFile();
+			}
 
 			return oldValue;
 		}
