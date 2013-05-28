@@ -31,8 +31,9 @@ public class FileUtils {
 		StringBuffer outBuffer = new StringBuffer();
 
 		char[] inBuffer = new char[BUFFER_SIZE];
-		while (in.read(inBuffer, 0, BUFFER_SIZE) != -1)
-			outBuffer.append(inBuffer);
+		int read;
+		while ((read = in.read(inBuffer, 0, BUFFER_SIZE)) != -1)
+			outBuffer.append(inBuffer, 0, read);
 
 		in.close();
 
