@@ -1,6 +1,8 @@
 # About Persistent-HashMap
 The Persistent-HashMap is basically a persistent version of the Java HashMap class.
 
+![Build Status](https://api.travis-ci.org/reines/persistenthashmap.png)
+
 Warning: It is not under active development, and has not been used in a production environment.
 
 ## Features
