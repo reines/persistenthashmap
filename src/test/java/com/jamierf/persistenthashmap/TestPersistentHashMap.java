@@ -150,6 +150,12 @@ public abstract class TestPersistentHashMap {
 
 		// After adding an entry it should no longer be empty
 		assertFalse(map.isEmpty());
+		
+		// Remove the entry
+		map.remove("key");
+		
+		// After removing an entry it should be empty
+		assertTrue(map.isEmpty());
 	}
 
 	@Test
@@ -187,6 +193,9 @@ public abstract class TestPersistentHashMap {
 		// Confirm the entry no longer exists
 		assertFalse(map.containsKey("key"));
 		assertFalse(map.containsValue(value));
+		
+		// Confirm the map is empty
+		assertTrue(map.isEmpty());
 	}
 
 	@Test
