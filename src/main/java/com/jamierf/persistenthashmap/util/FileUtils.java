@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.Reader;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -27,7 +28,12 @@ public class FileUtils {
 	private FileUtils() { }
 
 	public static String getGZIPContents(File f) throws IOException {
-		BufferedReader in = new BufferedReader(new InputStreamReader(new GZIPInputStream(new FileInputStream(f))));
+		return getStringFromReader(new BufferedReader(new InputStreamReader(
+				new GZIPInputStream(new FileInputStream(f)))));
+	}
+
+	protected static String getStringFromReader(Reader in)
+			throws IOException {
 		StringBuffer outBuffer = new StringBuffer();
 
 		char[] inBuffer = new char[BUFFER_SIZE];
