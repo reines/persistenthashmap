@@ -3,7 +3,15 @@ The Persistent-HashMap is basically a persistent version of the Java HashMap cla
 
 [![Build Status](https://api.travis-ci.org/reines/persistenthashmap.png)](https://travis-ci.org/reines/persistenthashmap)
 
-Warning: It is not under active development, and has not been used in a production environment.
+_Warning: It is not under active development, and has not been used in a production environment._
+
+Persistent-HashMap can be found in maven central.
+
+    <dependency>
+        <groupId>com.jamierf</groupId>
+        <artifactId>persistenthashmap</artifactId>
+        <version>...</version>
+    </dependency>
 
 ## Features
  * Implements the Map interface so can be used in the exact same way as a regular HashMap.
