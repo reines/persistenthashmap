@@ -1,18 +1,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
     <groupId>com.jamierf</groupId>
     <artifactId>persistenthashmap</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Persistenthashmap</name>
+    <description>A disk-based HashMap implementation allowing persistence of data across sessions.</description>
+    <url>https://github.com/reines/persistenthashmap</url>
+
+    <licenses>
+        <license>
+            <name>BSD 3-Clause</name>
+            <url>https://github.com/reines/persistenthashmap/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jamie Furness</name>
+            <email>jamie@jamierf.co.uk</email>
+            <timezone>0</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <gson.version>1.7.1</gson.version>
         <xstream.version>1.3.1</xstream.version>
         <xpp3.version>1.1.4c</xpp3.version>
+
         <junit.version>4.8.2</junit.version>
 
         <jdk.version>1.7</jdk.version>
     </properties>
+
+    <issueManagement>
+        <url>https://github.com/reines/persistenthashmap/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/reines/persistenthashmap</url>
+        <connection>scm:git:git://github.com/reines/persistenthashmap.git</connection>
+        <developerConnection>scm:git:git@github.com:reines/persistenthashmap.git</developerConnection>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -30,6 +68,7 @@
             <artifactId>xpp3_min</artifactId>
             <version>${xpp3.version}</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
