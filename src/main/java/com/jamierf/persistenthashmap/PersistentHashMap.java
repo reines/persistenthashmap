@@ -8,24 +8,15 @@
 
 package com.jamierf.persistenthashmap;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.Serializable;
-import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
 import com.jamierf.persistenthashmap.serializers.OOSSerializer;
 import com.jamierf.persistenthashmap.serializers.ObjectSerializer;
 import com.jamierf.persistenthashmap.util.FileUtils;
+
+import java.io.*;
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class PersistentHashMap<K extends Serializable, V extends Serializable> implements Map<K, V> {
 
@@ -180,8 +171,11 @@ public class PersistentHashMap<K extends Serializable, V extends Serializable> i
 
 	public synchronized void clear() {
 		File[] keyFiles = root.listFiles();
-		for (File f : keyFiles)
-			FileUtils.deleteDirectory(f);
+        if (keyFiles != null) {
+            for (File f : keyFiles) {
+                FileUtils.deleteDirectory(f);
+            }
+        }
 
 		keyStore.mkdir();
 		valueStore.mkdir();
