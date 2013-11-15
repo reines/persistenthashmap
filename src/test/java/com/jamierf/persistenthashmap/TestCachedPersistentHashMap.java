@@ -1,18 +1,15 @@
 package com.jamierf.persistenthashmap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.util.Date;
-
+import com.jamierf.persistenthashmap.serializers.ObjectSerializer;
+import com.jamierf.persistenthashmap.util.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.jamierf.persistenthashmap.serializers.ObjectSerializer;
-import com.jamierf.persistenthashmap.util.FileUtils;
+import java.io.File;
+import java.util.Date;
+
+import static org.junit.Assert.*;
 
 public abstract class TestCachedPersistentHashMap {
 
@@ -142,6 +139,12 @@ public abstract class TestCachedPersistentHashMap {
 		// The size shouldn't be increased because we overwrote the old entry
 		assertEquals(2, map.size());
 	}
+
+    @Test
+    public void testClearEmptyMap() {
+        map.clear();
+        assertTrue(map.isEmpty());
+    }
 
 	@Test
 	public void testClear() {
